@@ -1,0 +1,40 @@
+.pagenate button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  border: 1px solid rgb(122, 86, 219);
+  border-radius: 50%;
+  background-color: rgb(165, 157, 211);
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.pagenate button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(182, 181, 181);
+  border: 1px solid rgb(182, 181, 181);
+}
+
+.pagenate button.active {
+  background-color: white;
+  border: 1px solid rgb(182, 181, 181);
+  color: rgb(122, 86, 219);
+}
+.pagenate {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .pagenate button {
+    width: 35px;
+    height: 35px;
+  }
+}

@@ -1,38 +1,145 @@
 .App {
+  border: 6px solid rgb(178, 204, 214);
+  min-height: calc(100vh - 12px);
+  width: calc(100vw - 12px);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+}
+
+.top-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.search_bar {
+  border: 1px solid rgb(189, 186, 186);
+  width: 20rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.top-options input {
+  outline: 0cm;
+  border: 0px;
+  font-size: 1.2rem;
+}
+
+.top-options button {
+  background-color: inherit;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.top-options button:disabled {
+  cursor: not-allowed;
+}
+
+.tableContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table,
+td,
+th {
+  border: 1px solid rgb(70, 69, 69);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table .actionable {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+table .actionable:hover {
+  background-color: rgb(196, 192, 192);
+}
+
+td,
+th {
+  padding: 0.3rem;
+}
+
+tr td {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table .email {
+  word-break: break-all;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+tr.datarow.active {
+  background-color: rgba(231, 228, 228, 0.89);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.checkbox-container input {
+  height: 22px;
+  width: 22px;
+}
+
+.edit-delete {
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.edit-delete i {
+  cursor: pointer;
+}
+.edit-delete .fa-edit {
+  margin-right: 0.5rem;
+}
+
+.pagenation-container {
+  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 1000px) {
+  .container {
+    max-width: 90%;
+    margin: 2rem auto 0 auto;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 600px) {
+  .top-options {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .search_bar {
+    width: 15rem;
+    font-size: 1rem;
+  }
+
+  .search_bar input {
+    font-size: 1rem;
+  }
+
+  .top-options button {
+    font-size: 1rem;
+  }
+  table .email {
+    padding: 0.5rem;
   }
 }
