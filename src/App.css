@@ -357,7 +357,7 @@ Custom Style For CheckBox
   border: 2px solid var(--sky-blue-color);
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 950px) {
   .container {
     width: 90%;
     padding-top: 2rem;
@@ -367,6 +367,10 @@ Custom Style For CheckBox
   .top-options {
     justify-content: center;
     gap: 1rem;
+  }
+
+  .search_bar {
+    flex: 1;
   }
 
   .search_bar input {
@@ -410,6 +414,10 @@ Custom Style For CheckBox
 @media only screen and (max-width: 500px) {
   .edit-delete {
     flex-direction: column;
+  }
+
+  .search_bar {
+    flex: auto;
   }
 
   table td,
