@@ -81,6 +81,7 @@
   justify-content: flex-start;
   gap: 1rem;
   width: 84%;
+  flex: 1;
 }
 
 .search_bar .fa-search {
@@ -409,6 +410,10 @@ Custom Style For CheckBox
 @media only screen and (max-width: 500px) {
   .edit-delete {
     flex-direction: column;
+  }
+
+  .search_bar {
+    flex: auto;
   }
 
   table td,
