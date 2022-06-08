@@ -1,19 +1,26 @@
 .pop_up_background {
   width: 100vw;
   height: 100vh;
-  background-color: black;
-  opacity: 0.5;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 20;
 }
 
+.dark .pop_up_background {
+  background-color: white;
+  opacity: 0.6;
+}
+
+.light .pop_up_background {
+  background-color: black;
+  opacity: 0.6;
+}
+
 .pop_up_input {
   width: 30rem;
   height: fit-content;
   padding: 3rem;
-  background-color: white;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,6 +28,14 @@
   z-index: 20;
   border-radius: 15px;
   display: flex;
+}
+
+.dark .pop_up_input {
+  background-color: var(--dark-theme-color);
+}
+
+.light .pop_up_input {
+  background-color: var(--light-theme-color);
 }
 
 .pop_up_input .form {
@@ -35,6 +50,7 @@
   margin: 0 0 0.5rem 0;
   font-size: 1.2rem;
   font-weight: 600;
+  line-height: 24px;
 }
 
 .pop_up_input .cross {
@@ -45,19 +61,46 @@
   font-size: 3rem;
 }
 
+.dark .pop_up_input .cross {
+  color: var(--dark-light-text-color);
+}
+
+.light .pop_up_input .cross {
+  color: var(--light-light-text-color);
+}
+
 .pop_up_input .input {
   flex-grow: 1;
   border-radius: 5px;
   width: 100%;
   height: 3rem;
   border: none;
-  outline: 1px solid black;
-  background-color: rgba(9, 117, 9, 0.171);
+  padding-left: 1rem;
   font-size: 1.2rem;
+}
+
+.dark .pop_up_input .input {
+  outline: 1px solid var(--dark-light-text-color);
+  background-color: var(--dark-light-theme-color);
+  color: var(--dark-light-text-color);
+}
+
+.light .pop_up_input .input {
+  outline: 1px solid var(--light-light-text-color);
+  background-color: var(--light-theme-color);
+  color: var(--light-light-text-color);
 }
 
 .pop_up_input .input-description {
   height: 8rem;
+}
+
+.dark .form {
+  color: var(--dark-light-text-color);
+}
+
+.light .form {
+  color: var(--light-light-text-color);
 }
 
 .pop_up_input .btn {
@@ -80,6 +123,18 @@
   border: 1px solid;
   border-radius: 10px;
   font-size: 1.2rem;
+}
+
+.dark .pop_up_buttons button {
+  background-color: var(--dark-light-theme-color);
+  border: 1px solid var(--dark-light-text-color);
+  color: var(--dark-light-text-color);
+}
+
+.light .pop_up_buttons button {
+  background-color: var(--light-theme-color);
+  border: 1px solid var(--light-light-text-color);
+  color: var(--light-light-text-color);
 }
 
 @media only screen and (max-width: 600px) {

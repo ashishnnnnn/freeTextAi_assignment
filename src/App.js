@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header, Pagenate, Modal } from "./Components";
+import { Pagenate, Modal } from "./Components";
 import React, { useState, useEffect } from "react";
 import { useUserData } from "./context/userContext";
 import { getData } from "./ApiCalls/getData";
@@ -13,7 +13,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [currUser, setCurrModalUser] = useState({});
   const [sortBy, setSortBy] = useState("NONE");
-
+  const [isDark, setIsDark] = useState(true);
   const toggle_modal = () => {
     setShowModal((pre_val) => !pre_val);
   };
@@ -45,9 +45,26 @@ function App() {
     fetchData();
   }, []);
   return (
-    <div className="App">
-      <Header />
+    <div className={"App " + (isDark ? "dark" : "light")}>
       <div className="container">
+        <div className="header">
+          <p>freeTextAI</p>
+          {isDark ? (
+            <i
+              onClick={() => {
+                setIsDark(!isDark);
+              }}
+              class="fas fa-sun"
+            ></i>
+          ) : (
+            <i
+              onClick={() => {
+                setIsDark(!isDark);
+              }}
+              class="fas fa-moon"
+            ></i>
+          )}
+        </div>
         <div className="top-options">
           <div className="search_bar">
             <i class="fas fa-search"></i>
@@ -57,45 +74,65 @@ function App() {
                 setSearchValue(e.target.value);
                 setCuurentPage(1);
               }}
-              placeholder="search by name email or role"
+              placeholder="search"
             />
+            {searchValue.length > 0 && (
+              <i
+                onClick={() => {
+                  setSearchValue("");
+                }}
+                class="fas fa-times"
+              ></i>
+            )}
           </div>
-          <button
-            onClick={() => {
-              setUserData({ type: "DELETE_MULTIPLE", payload: selectedRow });
-              setSelectedRow([]);
-            }}
-            disabled={selectedRow.length === 0}
-          >
-            Delete Selected
-          </button>
+          {selectedRow.length > 0 && (
+            <div
+              onClick={() => {
+                setUserData({ type: "DELETE_MULTIPLE", payload: selectedRow });
+                setSelectedRow([]);
+              }}
+              disabled={selectedRow.length === 0}
+              className="delete-header"
+            >
+              <i class="far fa-trash-alt"></i>
+              <p>delete</p>
+            </div>
+          )}
         </div>
         <div className="tableContainer">
           <table>
             <tr>
               <th className="checkbox-container">
                 {selectedRow.length === dataToShow.length ? (
-                  <input
-                    onClick={() => {
-                      setSelectedRow([]);
-                    }}
-                    type="checkbox"
-                    checked={true}
-                  />
+                  <label className="checkbox-container">
+                    <input
+                      onClick={() => {
+                        setSelectedRow([]);
+                      }}
+                      type="checkbox"
+                      checked={true}
+                      className="checkbox"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
                 ) : (
-                  <input
-                    onClick={() => {
-                      setSelectedRow(() => {
-                        let newSelectedRow = [];
-                        dataToShow.forEach((ele) => {
-                          newSelectedRow.push(ele.id);
+                  <label className="checkbox-container">
+                    <input
+                      onClick={() => {
+                        setSelectedRow(() => {
+                          let newSelectedRow = [];
+                          dataToShow.forEach((ele) => {
+                            newSelectedRow.push(ele.id);
+                          });
+                          return newSelectedRow;
                         });
-                        return newSelectedRow;
-                      });
-                    }}
-                    type="checkbox"
-                    checked={false}
-                  />
+                      }}
+                      type="checkbox"
+                      checked={false}
+                      className="checkbox"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
                 )}
               </th>
               <th
@@ -104,7 +141,7 @@ function App() {
                 }}
                 className="actionable"
               >
-                Name
+                name
               </th>
               <th
                 onClick={() => {
@@ -112,7 +149,7 @@ function App() {
                 }}
                 className="actionable"
               >
-                Email
+                email
               </th>
               <th
                 onClick={() => {
@@ -120,9 +157,9 @@ function App() {
                 }}
                 className="actionable"
               >
-                Role
+                role
               </th>
-              <th>Action</th>
+              <th></th>
             </tr>
             {dataToShow.length > 0 &&
               dataToShow.map((ele) => (
@@ -132,30 +169,41 @@ function App() {
                   }
                   key={ele.id}
                 >
-                  <td className="checkbox-container">
+                  <td>
                     {selectedRow.includes(ele.id) ? (
-                      <input
-                        onClick={() => {
-                          setSelectedRow((pre_value) =>
-                            pre_value.filter((selected) => selected != ele.id)
-                          );
-                        }}
-                        checked={true}
-                        type="checkbox"
-                      />
+                      <label className="checkbox-container">
+                        <input
+                          onClick={() => {
+                            setSelectedRow((pre_value) =>
+                              pre_value.filter((selected) => selected != ele.id)
+                            );
+                          }}
+                          checked={true}
+                          type="checkbox"
+                          className="checkbox"
+                        />
+                        <span class="checkmark"></span>
+                      </label>
                     ) : (
-                      <input
-                        onClick={() => {
-                          setSelectedRow((pre_value) => [...pre_value, ele.id]);
-                        }}
-                        checked={false}
-                        type="checkbox"
-                      />
+                      <label className="checkbox-container">
+                        <input
+                          onClick={() => {
+                            setSelectedRow((pre_value) => [
+                              ...pre_value,
+                              ele.id,
+                            ]);
+                          }}
+                          checked={false}
+                          type="checkbox"
+                          className="checkbox"
+                        />
+                        <span class="checkmark"></span>
+                      </label>
                     )}
                   </td>
-                  <td>{ele.name}</td>
-                  <td className="email">{ele.email}</td>
-                  <td>{ele.role}</td>
+                  <td className=" name">{ele.name}</td>
+                  <td className=" email">{ele.email}</td>
+                  <td className="">{ele.role}</td>
                   <td className="edit-delete">
                     <i
                       onClick={() => {
@@ -171,7 +219,7 @@ function App() {
                           payload: ele.id,
                         });
                       }}
-                      class="fas fa-trash"
+                      class="far fa-trash-alt"
                     ></i>
                   </td>
                 </tr>

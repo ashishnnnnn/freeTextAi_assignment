@@ -1,61 +1,146 @@
 .App {
-  border: 6px solid rgb(178, 204, 214);
-  min-height: calc(100vh - 12px);
-  width: calc(100vw - 12px);
+  min-width: fit-content;
+  overflow: auto;
+  min-height: 100vh;
+}
+
+.App.dark {
+  background-color: var(--dark-theme-color);
+}
+
+.App.light {
+  background-color: var(--light-theme-color);
 }
 
 .container {
   max-width: 1000px;
-  margin: 2rem auto 0 auto;
+  margin: 0 auto;
+  padding-top: 6rem;
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+/* **************************************** Top Header Styling ******************************* */
+
+.header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.header .fa-sun {
+  color: var(--light-theme-color);
+}
+
+.header .fa-moon {
+  color: var(--dark-theme-color);
+}
+
+.header p {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 24px;
+  font-family: "Inter";
+  font-style: normal;
+}
+
+.dark .header p {
+  color: var(--dark-header-color);
+}
+
+.light .header p {
+  color: var(--light-header-color);
 }
 
 .top-options {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.top-options .fa-times {
+  color: var(--sky-blue-color);
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .search_bar {
-  border: 1px solid rgb(189, 186, 186);
-  width: 20rem;
-  font-size: 1.2rem;
-  padding: 0.8rem;
+  height: 60px;
+  padding: 0rem 1rem;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 1rem;
+  width: 84%;
 }
 
-.top-options input {
-  outline: 0cm;
-  border: 0px;
-  font-size: 1.2rem;
+.search_bar .fa-search {
+  color: var(--sky-blue-color);
+  font-size: 20px;
 }
 
-.top-options button {
+/* Background Color Of Search Bar On  */
+
+.dark .search_bar {
+  background-color: var(--dark-light-theme-color);
+}
+
+.light .search_bar {
+  background-color: var(--light-dark-theme-color);
+}
+
+.search_bar input {
   background-color: inherit;
-  border: 1px solid black;
-  cursor: pointer;
-  padding: 0.6rem;
-  font-size: 1.2rem;
+  border: 0px;
+  outline: 0px;
+  font-size: 16px;
+  width: 100%;
 }
 
-.top-options button:disabled {
-  cursor: not-allowed;
+.dark .search_bar input {
+  color: var(--dark-text-color);
 }
 
-.tableContainer {
+.light .search_bar input {
+  color: var(--light-text-color);
+}
+
+.delete-header {
+  height: 60px;
+  padding: 0 1rem;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-table,
-td,
-th {
-  border: 1px solid rgb(70, 69, 69);
+.dark .delete-header {
+  background-color: var(--dark-light-theme-color);
+  color: var(--dark-light-text-color);
+}
+
+.light .delete-header {
+  background-color: var(--light-dark-theme-color);
+  color: var(--light-light-text-color);
+}
+
+/********************************************* Table Styling *****************************/
+
+.tableContainer {
+  padding-bottom: 3rem;
 }
 
 table {
@@ -63,73 +148,250 @@ table {
   border-collapse: collapse;
 }
 
-table .actionable {
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-table .actionable:hover {
-  background-color: rgb(196, 192, 192);
-}
-
-td,
-th {
-  padding: 0.3rem;
-}
-
-tr td {
-  text-align: center;
-}
-
 table .email {
   word-break: break-all;
 }
 
-tr.datarow.active {
-  background-color: rgba(231, 228, 228, 0.89);
+.dark table tr:not(:last-child) {
+  border-bottom: 1px solid var(--dark-light-theme-color);
 }
 
-.checkbox-container input {
-  height: 22px;
-  width: 22px;
+.light table tr:not(:last-child) {
+  border-bottom: 1px solid var(--light-header-color);
+}
+table .actionable {
+  cursor: pointer;
+}
+
+.dark table .actionable:hover {
+  background-color: var(--dark-light-theme-color);
+}
+
+.light table .actionable:hover {
+  background-color: var(--light-header-color);
+}
+
+table th {
+  text-align: left;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 1rem;
+}
+
+table tr th:last-child {
+  text-align: right;
+}
+
+table .checkbox-container {
+  width: 40px;
+  height: 25px;
+}
+
+table tr th:not(:first-child) {
+  width: 170px;
+  height: 25px;
+}
+
+table td {
+  padding: 0.6rem;
+  text-align: left;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 1rem;
+}
+
+table tr td:last-child {
+  text-align: right;
+}
+
+.dark th {
+  color: var(--dark-light-text-color);
+  border-bottom: var(--dark-light-theme-color);
+}
+
+.light th {
+  color: var(--light-text-color);
+  border-bottom: var(--dark-light-theme-color);
 }
 
 .edit-delete {
+  display: flex;
+  justify-content: flex-end;
   gap: 0.5rem;
-  font-size: 1.2rem;
+  opacity: 0;
+}
+
+.dark .datarow:hover,
+.dark .active {
+  background-color: #363e52;
+}
+
+.light .datarow:hover,
+.light .active {
+  background-color: #afb0b3;
+}
+
+.datarow:hover .edit-delete {
+  opacity: 1;
 }
 
 .edit-delete i {
-  cursor: pointer;
-}
-.edit-delete .fa-edit {
-  margin-right: 0.5rem;
-}
-
-.pagenation-container {
-  margin-top: 1rem;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 1000px) {
+.dark .edit-delete i {
+  background-color: var(--dark-light-theme-color);
+  color: var(--dark-light-text-color);
+}
+
+.light .edit-delete i {
+  background-color: var(--light-dark-theme-color);
+  color: var(--light-text-color);
+}
+
+.dark td {
+  color: var(--dark-light-text-color);
+}
+
+.light td {
+  color: var(--light-text-color);
+}
+
+.dark .checkbox {
+  background-color: var(--dark-theme-color);
+}
+
+.light .checkbox {
+  background-color: var(--light-theme-color);
+}
+
+/* 
+Custom Style For CheckBox
+ */
+
+.checkbox-container {
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  margin-left: 30px;
+  align-self: center;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-container .checkmark {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  height: 20px;
+  width: 20px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--sky-blue-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dark .checkbox-container .checkmark:after {
+  border: solid var(--dark-theme-color);
+  border-width: 0 3px 3px 0;
+}
+
+.light .checkbox-container .checkmark:after {
+  border: solid var(--light-theme-color);
+  border-width: 0 3px 3px 0;
+}
+
+.dark .checkmark {
+  background-color: var(--dark-theme-color);
+  border: 2px solid var(--dark-light-text-color);
+}
+
+.light .checkmark {
+  background-color: var(--light-theme-color);
+  border: 2px solid var(--light-text-color);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  border: 2px solid var(--sky-blue-color);
+}
+
+@media only screen and (max-width: 900px) {
   .container {
-    max-width: 90%;
-    margin: 2rem auto 0 auto;
+    width: 90%;
+    padding-top: 2rem;
+    margin: 0 auto;
   }
-}
+  table .name {
+    word-break: break-all;
+  }
+  table td,
+  table th {
+    padding: 1rem;
+  }
 
-@media only screen and (max-width: 600px) {
+  .checkbox-container {
+    margin-left: 10px;
+    margin-right: 15px;
+    font-size: 16px;
+  }
+
+  .checkbox-container .checkmark {
+    width: 15px;
+    height: 15px;
+  }
+
+  .checkbox-container .checkmark:after {
+    left: 3px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+  }
+
   .top-options {
     justify-content: center;
     gap: 1rem;
-  }
-
-  .search_bar {
-    width: 15rem;
-    font-size: 1rem;
   }
 
   .search_bar input {
@@ -140,6 +402,17 @@ tr.datarow.active {
     font-size: 1rem;
   }
   table .email {
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .edit-delete {
+    flex-direction: column;
+  }
+
+  table td,
+  table th {
     padding: 0.5rem;
   }
 }

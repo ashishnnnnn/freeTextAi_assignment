@@ -26,7 +26,7 @@ export const Pagenate = ({ currPage, dataPerPage, dataLength, pagenate }) => {
       </button>
       {pages.map((ele, idx) => (
         <button
-          className={ele === Number(currPage) ? "active" : ""}
+          className={ele === Number(currPage) ? "active-btn" : ""}
           key={idx}
           style={{}}
           onClick={() => {
