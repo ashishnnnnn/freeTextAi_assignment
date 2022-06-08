@@ -363,12 +363,29 @@ Custom Style For CheckBox
     padding-top: 2rem;
     margin: 0 auto;
   }
-  table .name {
-    word-break: break-all;
+
+  .top-options {
+    justify-content: center;
+    gap: 1rem;
   }
+
+  .search_bar input {
+    font-size: 1rem;
+  }
+
+  .top-options button {
+    font-size: 1rem;
+  }
+
   table td,
   table th {
     padding: 1rem;
+  }
+  table .name {
+    word-break: break-all;
+  }
+  table .email {
+    padding: 0.5rem;
   }
 
   .checkbox-container {
@@ -387,22 +404,6 @@ Custom Style For CheckBox
     top: 0px;
     width: 5px;
     height: 10px;
-  }
-
-  .top-options {
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .search_bar input {
-    font-size: 1rem;
-  }
-
-  .top-options button {
-    font-size: 1rem;
-  }
-  table .email {
-    padding: 0.5rem;
   }
 }
 
