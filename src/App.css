@@ -15,9 +15,8 @@
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding-top: 6rem;
   position: relative;
-  padding-bottom: 5rem;
+  padding: 6rem 1rem 5rem 1rem;
 }
 
 /* **************************************** Top Header Styling ******************************* */
@@ -60,7 +59,7 @@
 
 .top-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
