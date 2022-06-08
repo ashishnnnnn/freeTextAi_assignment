@@ -15,8 +15,9 @@
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  padding-top: 6rem;
   position: relative;
-  padding: 6rem 1rem 5rem 1rem;
+  padding-bottom: 5rem;
 }
 
 /* **************************************** Top Header Styling ******************************* */
@@ -59,7 +60,7 @@
 
 .top-options {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -81,7 +82,6 @@
   justify-content: flex-start;
   gap: 1rem;
   width: 84%;
-  flex: 1;
 }
 
 .search_bar .fa-search {
@@ -410,10 +410,6 @@ Custom Style For CheckBox
 @media only screen and (max-width: 500px) {
   .edit-delete {
     flex-direction: column;
-  }
-
-  .search_bar {
-    flex: auto;
   }
 
   table td,
